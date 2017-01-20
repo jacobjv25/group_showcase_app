@@ -1,7 +1,7 @@
 $(function(){
   getPeople();
 
-  getLikes();
+
 
 
 
@@ -28,7 +28,7 @@ function appendPerson(group){
     $('#container').append('<div id="'+ person.name +'"><h3>'+ person.name+ '</h3><img src="'
      + person.url + '"/><p>' +
      person.bio + '</p>' + ' <button>Like</button></div>');
-
+     getLikes();
   });
 }
 
