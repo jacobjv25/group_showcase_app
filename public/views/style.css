@@ -1,9 +1,57 @@
+body{
+  font-family:Helvetica,serif;
+  background-color: rgb(119, 169, 222);
+
+}
 img {
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: auto;
   display: block;
+  margin: auto;
+  padding:10px;
 }
 
-/*#Ahkillah {
-  background-color: red;
-}*/
+h1,h3{
+  text-align: center;
+}
+
+#container{
+  /*background-color: rgb(147, 147, 147);*/
+  display:flex;
+  justify-content: space-around;
+  align-content: center;
+}
+#Erik,#Ahkillah,#Jake,#Hue{
+  border:2px solid black;
+  display:inline-block;
+  width:250px;
+  transition: 0.5s all ease-in-out;
+  background-color: rgb(64, 215, 255);
+  border-radius: 15px;
+}
+#Erik:hover,#Ahkillah:hover,#Jake:hover,#Hue:hover{
+  transform: scale(1.2);
+z-index:2;
+box-shadow: 0 0 20px black;
+}
+p{
+  height:100px;
+  margin:5px;
+}
+button{
+  height:30px;
+  width:60px;
+  background-color: rgb(99, 75, 180);
+  border:2px solid rgb(91, 74, 171);
+  border-radius:15px;
+  display:block;
+  margin:auto;
+}
+button:hover{
+  cursor:pointer;
+  background-color: rgb(113, 65, 175);
+}
+.likes{
+  text-align: center;
+  margin:10px;
+}

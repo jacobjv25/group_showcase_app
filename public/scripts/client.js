@@ -9,6 +9,8 @@ $(function(){
 
 
 });
+
+//code runs on doc load, ajax gets array to 'appendperson' with
 function getPeople(){
   $.ajax({
     url:'/bios',
@@ -16,18 +18,21 @@ function getPeople(){
     success:appendPerson
   });
 }
+
+//called in getPEople, appends DOM with divs containing each person's information
 function appendPerson(group){
-  console.log("hello world!");
+
   console.log(group);
-  // var likes=getLikes();
-  // console.log(likes);
+
   group.forEach(function(person) {
-    $('#container').append('<div id="'+ person.name +'">'+ person.name+ ' ' +
-     person.bio + ' ' + '<img src="' + person.url + '"/> <button>Like</button></div>');
+    $('#container').append('<div id="'+ person.name +'"><h3>'+ person.name+ '</h3><img src="'
+     + person.url + '"/><p>' +
+     person.bio + '</p>' + ' <button>Like</button></div>');
 
   });
 }
 
+//runs on like button click, ajax call gets likes object from likes.js
 function getLikes(){
   console.log('working');
   $.ajax({
@@ -39,16 +44,18 @@ function getLikes(){
 
 };
 
+//appends likeobject to dom
 function appendLikes(likeObject){
 
   $('.likes').remove();
 
-  $('#Ahkillah').append('<div class="likes">' + likeObject.ahkillah + '</div>');
-  $('#Jake').append('<div class="likes">' + likeObject.jake + '</div>');
-  $('#Hue').append('<div class="likes">' + likeObject.hue + '</div>');
-  $('#Erik').append('<div class="likes">' + likeObject.erik + '</div>');
+  $('#Ahkillah').append('<div class="likes">Likes: ' + likeObject.ahkillah + '</div>');
+  $('#Jake').append('<div class="likes">Likes: ' + likeObject.jake + '</div>');
+  $('#Hue').append('<div class="likes">Likes: ' + likeObject.hue + '</div>');
+  $('#Erik').append('<div class="likes">Likes: ' + likeObject.erik + '</div>');
 }
 
+//onlick event listener with new ajaxx to send a +1 to the server for a certain person
 $(document).on('click', 'button', function() {
   console.log('hello');
   var person = $(this).parent().attr('id');
@@ -56,7 +63,7 @@ $(document).on('click', 'button', function() {
   $.ajax({
     url: '/likes/' + person,
     type: 'POST',
-    data: count, //This is going to be our req on the server side.
+    data: count, //This is going to be our req on the server side. req.body.val
     success: getLikes
   })
 })
